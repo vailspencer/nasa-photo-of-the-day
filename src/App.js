@@ -1,5 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./App.css";
+import LoaderTool from './Components/LoaderTool/LoaderTool.js';
+import Photo from './Components/Photo/Photo.js';
+import axios from 'axios'
+
 
 function App() {
   return (
