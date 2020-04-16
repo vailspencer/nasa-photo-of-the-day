@@ -4,6 +4,7 @@ import LoaderTool from './Components/LoaderTool/LoaderTool.js';
 import Photo from './Components/Photo/Photo.js';
 import axios from 'axios'
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 const api_key ='IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J';
 /* const url = "https://api.nasa.gov/planetary/apod?api_key=IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J"; */
@@ -65,11 +66,11 @@ function App() {
           />
         </div>
 
-        <input name='date' value={formValues.date} onChange={onInputChange}></input>
+        {/* <input name='date' value={formValues.date} onChange={onInputChange}></input> */}
         
-        <footer>
+        <Footer>
           <p>The end of this web app!!</p>
-        </footer>
+        </Footer>
     </div>
   );
 }
