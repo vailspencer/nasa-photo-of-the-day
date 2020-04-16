@@ -12,38 +12,51 @@ function App() {
  
 
   const [theDate, setDate] = useState();
-  const [theTitle, setTitle] =useState();
+
   const [theUrl, setUrl] = useState();
+
+  const [theTitle, setTitle] =useState();
+
   const [theExplanation, setExplanation] = useState();
-  const [copyright, setCopyRight] = useState()
+
+  const [copyright, setCopyRight] = useState();
 
   useEffect(() => {
     axios.get(url)
     .then (res => {
+      setDate(res.data.date)
+      setTitle(res.data.title)
+      setUrl(res.data.url)
+      setExplanation(res.data.explanation)
+      setCopyRight(res.data.copyright)
       console.log(res)
-      debugger
     })
-    .catch (err => {
-      console.log('error')
-    })
-  })
+    .catch (err => console.log('err'));
+    }, [])
 
+    if (!theUrl) return <LoaderTool />;
   return (
     <div className="App">
         <header className = 'header'>
-          <p>A header</p>
+          <p>NASA Photo of the Day</p>
         </header>
         <div className = 'main-content'>
-          <Photo />
+          <Photo
+          theDate={theDate}
+          theTitle={theTitle}
+          theUrl={theUrl}
+          theExplanation={theExplanation}
+          copyright={copyright}
+          />
           <p>
-          Read through the instructions in the README.md file to build your NASA
-          app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-          <LoaderTool />
+            {/*<LoaderTool />*/}
           </p>
         </div>
+
         <button>Change the date</button>
+        
         <footer>
-          <p>This is my footer</p>
+          <p>The end of this web app!!</p>
         </footer>
     </div>
   );
