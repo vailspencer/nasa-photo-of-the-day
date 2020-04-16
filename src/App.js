@@ -3,6 +3,7 @@ import "./App.css";
 import LoaderTool from './Components/LoaderTool/LoaderTool.js';
 import Photo from './Components/Photo/Photo.js';
 import axios from 'axios'
+import Header from './Components/Header';
 
 const api_key ='IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J';
 /* const url = "https://api.nasa.gov/planetary/apod?api_key=IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J"; */
@@ -51,9 +52,9 @@ function App() {
     if (!theUrl) return <LoaderTool />;
   return (
     <div className="App">
-        <header className = 'header'>
+        <Header className = 'header'>
           <p>NASA Photo of the Day</p>
-        </header>
+        </Header>
         <div className = 'main-content'>
           <Photo
           theDate={theDate}
@@ -62,9 +63,6 @@ function App() {
           theExplanation={theExplanation}
           copyright={copyright}
           />
-          <p>
-            {/*<LoaderTool />*/}
-          </p>
         </div>
 
         <input name='date' value={formValues.date} onChange={onInputChange}></input>
