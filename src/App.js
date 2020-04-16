@@ -5,11 +5,15 @@ import Photo from './Components/Photo/Photo.js';
 import axios from 'axios'
 
 const api_key ='IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J';
-const url = "https://api.nasa.gov/planetary/apod?api_key=IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J";
+/* const url = "https://api.nasa.gov/planetary/apod?api_key=IOUwredz2cVdPgoUZMg9d7OlGyAZjtyM8JY03v5J"; */
+const initialFormValues = {
+  date: " "
+}
+
+/* //url = `https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${initialFormValues}`; */
 
 
 function App() {
- 
 
   const [theDate, setDate] = useState();
 
@@ -21,8 +25,18 @@ function App() {
 
   const [copyright, setCopyRight] = useState();
 
+  const [formValues, setFormValues] =useState(initialFormValues)
+
+
+  const onInputChange = event => {
+    const inputDate = event.target.date
+    const inputValue = event.target.value
+
+    setFormValues({...formValues, [inputDate]: inputValue})
+  }
+
   useEffect(() => {
-    axios.get(url)
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
     .then (res => {
       setDate(res.data.date)
       setTitle(res.data.title)
@@ -53,7 +67,7 @@ function App() {
           </p>
         </div>
 
-        <button>Change the date</button>
+        <input name='date' value={formValues.date} onChange={onInputChange}></input>
         
         <footer>
           <p>The end of this web app!!</p>
